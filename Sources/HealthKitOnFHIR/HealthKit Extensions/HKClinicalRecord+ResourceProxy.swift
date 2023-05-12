@@ -9,7 +9,7 @@
 import HealthKit
 import ModelsR4
 
-
+#if !EXCLUDE_HKCLINICALRECORD
 extension HKClinicalRecord {
     /// Converts an `HKClinicalRecord` into a corresponding FHIR resource, encapsulated in a `ResourceProxy`
     func resource() throws -> ResourceProxy {
@@ -27,3 +27,4 @@ extension HKClinicalRecord {
         }
     }
 }
+#endif

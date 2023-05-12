@@ -46,8 +46,10 @@ extension HKSample {
             try categorySample.buildCategoryObservation(&observation)
         case let electrocardiogram as HKElectrocardiogram:
             try electrocardiogram.buildObservation(&observation, mappings: mapping)
+        #if !EXCLUDE_HKCLINICALRECORD
         case let clinicalRecord as HKClinicalRecord:
             return try clinicalRecord.resource()
+        #endif
         default:
             throw HealthKitOnFHIRError.notSupported
         }
